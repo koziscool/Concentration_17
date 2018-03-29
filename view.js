@@ -4,7 +4,6 @@ matcherView = {
 
 
     init: function(  ) {
-        console.log("here");
         this.$grid = $("#matcher-grid");
         this.addCardsToGrid();
 
@@ -12,12 +11,14 @@ matcherView = {
         $(".card").css({
             width: width + "%"
         });
-
-        $(".card").click( function(e){
-            matcherController.selectCard( $(this).data('card-id'));
-        });
-
     },
+
+    addClickHandlers: function( fn, context ) {        
+        $(".card").click( function(e){
+            fn.call( context, $(this).data('card-id'));
+        });
+    },
+        
 
     addCardsToGrid: function(  ) {
         for( var i = 0; i < this.model.cards.length ; i++ ) {
@@ -30,10 +31,27 @@ matcherView = {
         }
                     
     },
+    
+    revealCard: function( id ) {
+        $("#card-" + id).addClass('revealed');
+    },
+        
+    setCorrect: function( id ) {
+        $("#card-" + id).addClass('correct');
+        $("#card-" + id).off('click');
+    },
+        
+    hideCards: function(  ) {
+        $(".card").not(".correct").removeClass('revealed');
+    },
         
 
+
     updateGameView: function(  ) {
-        
+        $("#game-state-text").text( this.model.gameStateText);
+        $("#num-guesses").text( this.model.numGuesses);
+        $("#matched-cards").text( this.model.matchedCards);
+        $("#total-cards").text( this.model.totalCards);
     },
         
 

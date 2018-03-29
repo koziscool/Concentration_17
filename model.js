@@ -6,7 +6,12 @@ matcherModel  = {
 
     currentId: 1,
 
-    numCards: 0,
+    selectedCard: null,
+
+    numGuesses: 0,
+    totalCards: 0,
+    matchedCards: 0,
+    gameStateText: "You haven't won yet, pick a pair.",
 
 
     init: function( size ) {
@@ -20,7 +25,7 @@ matcherModel  = {
         var value = this.cardValues[ Math.floor( Math.random() * this.cardValues.length) ];
         this.cards.push( new this.Card( this.getId(), value ));  
         this.cards.push( new this.Card( this.getId(), value ));  
-        this.numCards += 2;
+        this.totalCards += 2;
     },
         
     shuffle: function(  ) {
@@ -46,6 +51,39 @@ matcherModel  = {
         this.id = id;
         this.value = value;
     },
+
+    sameCard: function( id ) {
+        return this.selectedCard && this.selectedCard.id === id;
+    },
+        
+    getCard: function( id ) {
+        for( var i = 0; i < this.cards.length ; i++ ) {
+            if( this.cards[i].id === id ) return this.cards[i];
+        }
+        return null;
+    },
+        
+    setSelectedCard: function( id ) {
+        this.selectedCard = this.getCard(id);
+    },
         
 
-}
+    checkGuess: function( id ) {
+        this.numGuesses++;
+        var secondCard = this.getCard(id);
+        var isCorrect = false;
+
+        if( this.selectedCard && secondCard )
+            isCorrect = (this.selectedCard.value === secondCard.value);
+
+        this.selectedCard = null;
+        if (isCorrect) this.matchedCards += 2;
+
+        if( this.matchedCards === this.totalCards )
+            this.gameStateText = "Congratulations, you win!";
+
+        return isCorrect;
+    },
+        
+
+};
