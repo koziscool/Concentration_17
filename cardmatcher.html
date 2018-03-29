@@ -1,0 +1,50 @@
+<DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="cardmatcher.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>Concentration</title>
+</head>
+<body>
+	<div class="game-info-container">
+		<div class="section">
+			<div id="game-state-text">
+				Choose a grid size and start game.
+			</div>
+		</div>
+
+		<div class="section">
+			Num guesses:
+			<div id="num-guesses">
+			</div>
+		</div>
+	
+		<div class="section">
+			Matched cards:
+			<div id="matched-cards">
+			</div>
+		</div>
+
+		<div class="section">
+			Total cards:
+			<div id="total-cards">
+			</div>
+		</div>
+	</div>
+
+	<div class="form-container">
+		<form id="grid-size-form">
+			<label for="grid-size">Grid Size</label>
+			<br>
+			<input type="text" id="grid-size" name="grid-size">
+			<br>
+			<input type="submit" value="Create Grid" id="grid-size-button">
+			<br>
+		</form>
+	</div>
+	
+	<div class="grid-container">
+	</div>
+</body>
+</html>
