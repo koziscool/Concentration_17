@@ -1,34 +1,55 @@
 
 .game-info-container{
-	display: block;
-	background-color: gray;
-	height: 80px;
-	color: #DDD;
-	margin:  0 0 10px 0;
+    display: block;
+    background-color: gray;
+    height: 80px;
+    color: #DDD;
+    margin:  0 0 10px 0;
 }
 
 .section{
-	width: 25%;
-	display: inline-block;
-	float: left;
-	text-align: center;
-	top: 10px;
-	position: relative;
+    width: 25%;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    top: 10px;
+    position: relative;
 }
 
 .section div{
-	color: white;
-	font-weight: bold;
-	display: inline;
+    color: white;
+    font-weight: bold;
+    display: inline;
 }
 
 .form-container{
-	text-align: center;
-	margin: 0 auto
+    text-align: center;
+    margin: 0 auto
 }
 
 .grid-container{
-	margin: 0 auto;
-	width: 80%;
+    margin: 0 auto;
+    width: 80%;
 }
+
+.card{
+    margin: 1%;
+    background-color: lightyellow;
+    height: 60px;
+    transition: all 0.5s;
+    transform: rotateY(180deg);
+    border:  1px solid black;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.name{
+    font-size: large;
+    text-align: center;
+    transition: all 0.5s;
+    transform: translateY(60%) rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+
 
